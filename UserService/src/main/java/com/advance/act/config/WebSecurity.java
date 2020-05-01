@@ -35,7 +35,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 //		hasIpAddress(environment.getProperty("secure.ip"))
-		http.authorizeRequests().antMatchers("/users/**").hasIpAddress("192.168.0.24")
+		http.authorizeRequests().antMatchers("/**").hasIpAddress(environment.getProperty("secure.ip"))
 		.and().addFilter(getAuthenticationFilter());
 		
 		http.headers().frameOptions().disable();
